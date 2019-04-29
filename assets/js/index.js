@@ -248,8 +248,8 @@ var langChange= localStorage.getItem('langChange');
         $("#counte2").css('padding-top','6%');
 
         $("#counte3").text('DIG प्रशासन अनुभाग');
-        $("#counte3").css('font-size','40px');
-        $("#counte3").css('padding-top','6%');
+        $("#counte3").css('font-size','34px');
+        $("#counte3").css('padding-top','7%');
 
         $("#counte4").text('रिसेप्शन');
         $("#counte4").css('font-size','30px');
@@ -331,27 +331,27 @@ var langChange= localStorage.getItem('langChange');
              $("#videoTex").css('padding-top','38px');
          /////navigation page
          $("#counte1").text('cyberdome Lab');
-         $("#counte1").css('font-size','25px');
+         $("#counte1").css('font-size','23px');
          $("#counte1").css('padding-top','35px');
 
          $("#counte2").text('Conferece Hall');
-         $("#counte2").css('font-size','25px');
+         $("#counte2").css('font-size','23px');
          $("#counte2").css('padding-top','35px');
 
          $("#counte3").text('Operations Officer');
-         $("#counte3").css('font-size','23px');
-         $("#counte3").css('padding-top','35px');
+         $("#counte3").css('font-size','20px');
+         $("#counte3").css('padding-top','32px');
 
          $("#counte4").text('Server Room');
-         $("#counte4").css('font-size','25px');
+         $("#counte4").css('font-size','23px');
          $("#counte4").css('padding-top','35px');
 
          $("#counte5").text('Add on');
-         $("#counte5").css('font-size','25px');
+         $("#counte5").css('font-size','23px');
          $("#counte5").css('padding-top','35px');
 
          $("#counte6").text('Add on');
-         $("#counte6").css('font-size','25px');
+         $("#counte6").css('font-size','23px');
          $("#counte6").css('padding-top','35px');
 
 
@@ -439,8 +439,8 @@ $('#langChange').click(function(){
         $("#counte2").css('padding-top','6%');
 
         $("#counte3").text('DIG प्रशासन अनुभाग');
-        $("#counte3").css('font-size','40px');
-        $("#counte3").css('padding-top','6%');
+        $("#counte3").css('font-size','34px');
+        $("#counte3").css('padding-top','7%');
 
         $("#counte4").text('रिसेप्शन');
         $("#counte4").css('font-size','30px');
@@ -525,27 +525,27 @@ $('#langChange').click(function(){
          
          /////navigation page
          $("#counte1").text('cyberdome Lab');
-         $("#counte1").css('font-size','25px');
+         $("#counte1").css('font-size','23px');
          $("#counte1").css('padding-top','35px');
 
          $("#counte2").text('conference Hall');
-         $("#counte2").css('font-size','25px');
+         $("#counte2").css('font-size','23px');
          $("#counte2").css('padding-top','35px');
 
          $("#counte3").text('Operations Officer');
-         $("#counte3").css('font-size','23px');
-         $("#counte3").css('padding-top','35px');
+         $("#counte3").css('font-size','20px');
+         $("#counte3").css('padding-top','32px');
 
          $("#counte4").text('Server Room');
-         $("#counte4").css('font-size','25px');
+         $("#counte4").css('font-size','23px');
          $("#counte4").css('padding-top','35px');
 
          $("#counte5").text('Add on');
-         $("#counte5").css('font-size','25px');
+         $("#counte5").css('font-size','23px');
          $("#counte5").css('padding-top','35px');
 
          $("#counte6").text('Add on');
-         $("#counte6").css('font-size','25px');
+         $("#counte6").css('font-size','23px');
          $("#counte6").css('padding-top','35px');
 
                  //////counter number session
@@ -907,7 +907,7 @@ function nextPage(nextPage){
       ui_refresh.publish(str);
     //   $("#back_home_id").removeAttr('onclick');
  } else if(nextPage == "settings"){
-    Reset();
+    // Reset();
     $("#settingsPage").hide();
     $("#counterPage").show();
     // $("#indexPage").show();
