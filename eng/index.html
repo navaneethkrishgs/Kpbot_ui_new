@@ -184,7 +184,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" id="close" onclick="Modalclose('1');" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary enterBtnForTimer" id="enterBtn" onclick="check_user('welcome')">Ok</button>
+                            <button type="button" class="btn btn-primary" id="enterBtn" onclick="check_user('welcome')">Ok</button>
                         </div>
                         </div>
                     </div>
@@ -774,7 +774,7 @@
 			<div class="content">
 				<div class="column-two" id="choice_cash_withdrawal" onclick="navigation();">
 					<i class="icon-options hdfc-sprite one"></i>
-					<div class="option-bg hdfc-sprite" >
+					<div class="option-bg hdfc-sprite" onclick="demo();">
                        <div id="naviIcon"><img  id="naviIconImag" src="navigationIcon.png"></div>
 						<p class="counter navigatioS" id="navigatio">Sections</p>
 					</div>
@@ -793,7 +793,7 @@
 						<p class="counter" id="speechTex">Chat With Me</p>
 					</div>
 				</div>
-				<div class="column-two" id="choice_forex" >
+				<div class="column-two" id="choice_forex" onclick="demo();">
 					<i class="icon-options hdfc-sprite five"></i>
 					<div class="option-bg hdfc-sprite">
                         <div id="others1Icon"><img  id="others1IconImag" src="others1.png"></div>
@@ -809,7 +809,7 @@
 						<p class="counter" id="videoTex">Call Incharge</p>
 					</div>
 				</div>
-				<div class="column-two" id="choice_others" >
+				<div class="column-two" id="choice_others"  onclick="demo();">
 					<i class="icon-options hdfc-sprite six"></i>
 					<div class="option-bg hdfc-sprite">
                         <div id="others2Icon"><img  id="others2IconImag" src="others2.png"></div>
@@ -913,7 +913,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" id="close" onclick="Modalclose('1');" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary enterBtnForTimer" id="enterBtn" onclick="check_user('welcome')">Ok</button>
+                        <button type="button" class="btn btn-primary" id="enterBtn" onclick="check_user('welcome')">Ok</button>
                     </div>
                     </div>
                 </div>
@@ -974,28 +974,28 @@
 			<div class="content">
 				<div class="column-two" id="choice_cash_withdrawal" onclick="counter1();">
 					<i class="icon-options hdfc-sprite one"></i>
-					<div class="option-bg hdfc-sprite"  >
+					<div class="option-bg hdfc-sprite"  onclick="demo();">
                          <div id="counter1Icon"><img  id="counter1IconImag" src="counter1.png"></div>
 						<p class="counter" id="counte1">Skin Care</p>
 					</div>
 				</div>
 				<div class="column-two" id="choice_cash_deposit" onclick="counter4();">
 					<i class="icon-options hdfc-sprite two"></i>
-					<div class="option-bg hdfc-sprite"  >
+					<div class="option-bg hdfc-sprite"  onclick="demo();">
                         <div id="counter4Icon"><img  id="counter4IconImag" src="counter4.png"></div>
 						<p class="counter"  id="counte4">Bath & Body</p>
 					</div>
 				</div>
 				<div class="column-two" id="choice_demat" onclick="counter2();">
 					<i class="icon-options hdfc-sprite three"></i>
-					<div class="option-bg hdfc-sprite" >
+					<div class="option-bg hdfc-sprite"  onclick="demo();">
                         <div id="counter2Icon"><img  id="counter2IconImag" src="counter2.png"></div>
 						<p class="counter"  id="counte2">Make Up</p>
 					</div>
 				</div>
 				<div class="column-two" id="choice_forex" onclick="counter5();">
 					<i class="icon-options hdfc-sprite five"></i>
-					<div class="option-bg hdfc-sprite" >
+					<div class="option-bg hdfc-sprite"  onclick="demo();">
                         <div id="counter5Icon"><img  id="counter5IconImag" src="counter5.png"></div>
 						<p class="counter"  id="counte5">Hair</p>
 					</div>
@@ -1004,14 +1004,14 @@
 				<div class="column-two" id="choice_fixed_deposit" onclick="counter3();">
 
 					<i class="icon-options hdfc-sprite four"></i>
-					<div class="option-bg hdfc-sprite"  >
+					<div class="option-bg hdfc-sprite"  onclick="demo();">
                         <div id="counter3Icon"><img  id="counter3IconImag" src="counter3.png"></div>
 						<p class="counter"  id="counte3">Fragrance</p>
 					</div>
 				</div>
 				<div class="column-two" id="choice_others" onclick="counter6();">
 					<i class="icon-options hdfc-sprite six"></i>
-					<div class="option-bg hdfc-sprite"  >
+					<div class="option-bg hdfc-sprite"  onclick="demo();">
                         <div id="counter6Icon"><img  id="counter6IconImag" src="counter6.png"></div>
 						<p class="otherscounter"  id="counte6">Cosmetic</p>
 					</div>
@@ -1030,7 +1030,7 @@
                         </main>
                         <div class="enterBtn1" id="enterBtn" >
                        
-                         <div class="centered1"  > <a href="#" onclick="nextPage('main');"><li><i  id="nextPage" class="fa fa-arrow-left navigationPageBackBtn" aria-hidden="true">&nbsp;Back</i></a></li></div>
+                         <div class="centered1"  onclick="demo();"> <a href="#" onclick="nextPage('main');"><li><i  id="nextPage" class="fa fa-arrow-left navigationPageBackBtn" aria-hidden="true">&nbsp;Back</i></a></li></div>
                          </div> 
                         
                         </footer>   
@@ -1060,7 +1060,7 @@
                                             
                            </div>
                            <div class="navigation" id="test34" onclick="inCounterBanigation1();">
-                                <h5 id="textField"  >Navigation</h5>
+                                <h5 id="textField"  onclick="demo();">Navigation</h5>
                            </div>
                        </div>
                        
@@ -1069,7 +1069,7 @@
                         </main>
                         <div class="enterBtn1" id="enterBtn" >
                        
-                         <div class="centered1"   id= "back_counter1" > <a href="#" onclick="nextPage('counters');"><li><i  id="nextPage" class="fa fa-arrow-left counter1" aria-hidden="true">&nbsp;Back</i></a></li></div>
+                         <div class="centered1"  onclick="demo();" id= "back_counter1" > <a href="#" onclick="nextPage('counters');"><li><i  id="nextPage" class="fa fa-arrow-left counter1" aria-hidden="true">&nbsp;Back</i></a></li></div>
                          </div> 
                         
                     </footer>  
@@ -1097,7 +1097,7 @@
                            </div>
                            
                            <div class="navigation" id="test35" onclick="inCounterBanigation2();">
-                                <h5 id="textField1" >Navigation</h5>
+                                <h5 id="textField1" onclick="demo();">Navigation</h5>
                            </div>
                            
                        </div>
@@ -1107,7 +1107,7 @@
                         </main>
                         <div class="enterBtn1" id="enterBtn" >
                        
-                         <div class="centered1"   id= "back_counter2"> <a href="#" onclick="nextPage('counters');"><li><i  id="nextPage" class="fa fa-arrow-left counter2" aria-hidden="true">&nbsp;Back</i></a></li></div>
+                         <div class="centered1" onclick="demo();"  id= "back_counter2"> <a href="#" onclick="nextPage('counters');"><li><i  id="nextPage" class="fa fa-arrow-left counter2" aria-hidden="true">&nbsp;Back</i></a></li></div>
                          </div> 
                         
                     </footer>  
@@ -1135,7 +1135,7 @@
                                             
                            </div>
                            <div class="navigation" id="test36" onclick="inCounterBanigation3();">
-                                <h5 id="textField2" >Navigation</h5>
+                                <h5 id="textField2" onclick="demo();">Navigation</h5>
                            </div>
                        </div>
                        
@@ -1144,7 +1144,7 @@
                         </main>
                         <div class="enterBtn1" id="enterBtn" >
                        
-                         <div class="centered1" id= "back_counter3"> <a href="#" onclick="nextPage('counters');"><li><i  id="nextPage" class="fa fa-arrow-left counter3" aria-hidden="true">&nbsp;Back</i></a></li></div>
+                         <div class="centered1" onclick="demo();" id= "back_counter3"> <a href="#" onclick="nextPage('counters');"><li><i  id="nextPage" class="fa fa-arrow-left counter3" aria-hidden="true">&nbsp;Back</i></a></li></div>
                          </div> 
                         
                     </footer>  
@@ -1172,7 +1172,7 @@
                                             
                            </div>
                            <div class="navigation" id="test37" onclick="inCounterBanigation4();">
-                                <h5 id="textField3" >Navigation</h5>
+                                <h5 id="textField3" onclick="demo();">Navigation</h5>
                            </div>
                        </div>
                        
@@ -1181,7 +1181,7 @@
                         </main>
                         <div class="enterBtn1" id="enterBtn" >
                        
-                         <div class="centered1" id= "back_counter4"> <a href="#" onclick="nextPage('counters');"><li><i  id="nextPage" class="fa fa-arrow-left counter4" aria-hidden="true">&nbsp;Back</i></a></li></div>
+                         <div class="centered1" onclick="demo();" id= "back_counter4"> <a href="#" onclick="nextPage('counters');"><li><i  id="nextPage" class="fa fa-arrow-left counter4" aria-hidden="true">&nbsp;Back</i></a></li></div>
                          </div> 
                         
                     </footer>  
@@ -1209,7 +1209,7 @@
                                             
                            </div>
                            <div class="navigation" id="test38" onclick="inCounterBanigation5();">
-                                <h5 id="textField4" >Navigation</h5>
+                                <h5 id="textField4" onclick="demo();">Navigation</h5>
                            </div>
                        </div>
                        
@@ -1218,7 +1218,7 @@
                         </main>
                         <div class="enterBtn1" id="enterBtn" >
                        
-                         <div class="centered1"  id= "back_counter5"> <a href="#" onclick="nextPage('counters');"><li><i  id="nextPage" class="fa fa-arrow-left counter5" aria-hidden="true">&nbsp;Back</i></a></li></div>
+                         <div class="centered1" onclick="demo();" id= "back_counter5"> <a href="#" onclick="nextPage('counters');"><li><i  id="nextPage" class="fa fa-arrow-left counter5" aria-hidden="true">&nbsp;Back</i></a></li></div>
                          </div> 
                         
                     </footer>  
@@ -1241,7 +1241,7 @@
                     
                            <h3 class="headW"><center class="head" id="counterNumnerText5">Please Proceed to Counter Number</center></h3>
                            <div class="count">
-                              <h1 class="countNo" >6</h1>
+                              <h1 class="countNo" onclick="demo();">6</h1>
 
                            </div>
                            <div class="navigation" id="test39" onclick="inCounterBanigation6();">
@@ -1254,7 +1254,7 @@
                         </main>
                         <div class="enterBtn1" id="enterBtn" >
                        
-                         <div class="centered1"   id= "back_counter6"> <a href="#" onclick="nextPage('counters');"><li><i  id="nextPage" class="fa fa-arrow-left counter6" aria-hidden="true">&nbsp;Back</i></a></li></div>
+                         <div class="centered1" onclick="demo();"  id= "back_counter6"> <a href="#" onclick="nextPage('counters');"><li><i  id="nextPage" class="fa fa-arrow-left counter6" aria-hidden="true">&nbsp;Back</i></a></li></div>
                          </div> 
                         
                     </footer>  
@@ -1491,7 +1491,6 @@
 <script type="text/javascript" src="../assets/js/inactive.js"></script>
 <script type="text/javascript" src="../assets/js/data.js"></script>
 <script type="text/javascript" src="../assets/js/index.js"></script>
-<script type="text/javascript" src="../assets/js/timer.js"></script>
 <script type="text/javascript" src="../assets/js/mjpegcanvas.min.js"></script>
 
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
