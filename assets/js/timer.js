@@ -12,8 +12,6 @@ $(document).ready(function(){
 
      ////////// to navigationPage
      $('#navigatio').on('click',function(){
-       
-      
         couterpage_clear();
         gonavigationPage()
     });
