@@ -1,111 +1,111 @@
 
 
-$(document).ready(function(){
-    ////// to counter page
-    $('.indexPageBackBtn').on('click',function(){
-        index = setInterval(counterPage_timer,3000);
-    });
-     ///// clear couter timer
-     $('.counterPageBackBtn').on('click',function(){
-        couterpage_clear();
-    });
+// $(document).ready(function(){
+//     ////// to counter page
+//     $('.indexPageBackBtn').on('click',function(){
+//         index = setInterval(counterPage_timer,3000);
+//     });
+//      ///// clear couter timer
+//      $('.counterPageBackBtn').on('click',function(){
+//         couterpage_clear();
+//     });
 
-     ////////// to navigationPage
-     $('#navigatio').on('click',function(){
-        couterpage_clear();
-        gonavigationPage()
-    });
-    $('.navigationPageBackBtn').on('click',function(){
-        navigationPage_clear();
-        index = setInterval(counterPage_timer,3000);
-    });
-//////////speechTex
-    $('#speechTex').on('click',function(){
-        couterpage_clear();
-    });
-    $('.speechPageBackBtn').on('click',function(){
-        c_time =0;
-        index = setInterval(counterPage_timer,3000);
-    });
-    // /////////reasonTex
-    $('#reasonTex').on('click',function(){
-        couterpage_clear();
-    });
-    $('.others6PageBackBtn').on('click',function(){
-        c_time =0;
-        index = setInterval(counterPage_timer,3000);
-    });
+//      ////////// to navigationPage
+//      $('#navigatio').on('click',function(){
+//         couterpage_clear();
+//         gonavigationPage()
+//     });
+//     $('.navigationPageBackBtn').on('click',function(){
+//         navigationPage_clear();
+//         index = setInterval(counterPage_timer,3000);
+//     });
+// //////////speechTex
+//     $('#speechTex').on('click',function(){
+//         couterpage_clear();
+//     });
+//     $('.speechPageBackBtn').on('click',function(){
+//         c_time =0;
+//         index = setInterval(counterPage_timer,3000);
+//     });
+//     // /////////reasonTex
+//     $('#reasonTex').on('click',function(){
+//         couterpage_clear();
+//     });
+//     $('.others6PageBackBtn').on('click',function(){
+//         c_time =0;
+//         index = setInterval(counterPage_timer,3000);
+//     });
     
-       // /////////videoTex
-       $('#videoTex').on('click',function(){
-        couterpage_clear();
-    });
-    $('.videoPageBackBtn').on('click',function(){
-        c_time =0;
-        index = setInterval(counterPage_timer,3000);
-    });
+//        // /////////videoTex
+//        $('#videoTex').on('click',function(){
+//         couterpage_clear();
+//     });
+//     $('.videoPageBackBtn').on('click',function(){
+//         c_time =0;
+//         index = setInterval(counterPage_timer,3000);
+//     });
 
-    ///////////settings btn in counter page
-    $('.enterBtnForTimer').on('click',function(){
-        couterpage_clear();
-    });
-    $('.settingsPageBackBtn').on('click',function(){
-        c_time =0;
-        index = setInterval(counterPage_timer,3000);
-    });
+//     ///////////settings btn in counter page
+//     $('.enterBtnForTimer').on('click',function(){
+//         couterpage_clear();
+//     });
+//     $('.settingsPageBackBtn').on('click',function(){
+//         c_time =0;
+//         index = setInterval(counterPage_timer,3000);
+//     });
 
-    ////////////for counte1
-    $('#counte1').on('click',function(){
-        // counte1 = setInterval(counte1Page_timer,3000);
-        navigationPage_clear();
-    });
-    $('.counter1').on('click',function(){
-        navigate = setInterval(navigationPage_timer,3000);
-        // couter1page_clear();
-    });
+//     ////////////for counte1
+//     $('#counte1').on('click',function(){
+//         // counte1 = setInterval(counte1Page_timer,3000);
+//         navigationPage_clear();
+//     });
+//     $('.counter1').on('click',function(){
+//         navigate = setInterval(navigationPage_timer,3000);
+//         // couter1page_clear();
+//     });
 
-    /////counte2
-    $('#counte2').on('click',function(){
-        // counte1 = setInterval(counte1Page_timer,3000);
-        navigationPage_clear();
-    });
-    $('.counter2').on('click',function(){
-        navigate = setInterval(navigationPage_timer,3000);
-        // couter1page_clear();
-    });
-     /////counte3
-     $('#counte3').on('click',function(){
-        navigationPage_clear();
-    });
-    $('.counter3').on('click',function(){
-        navigate = setInterval(navigationPage_timer,3000);
+//     /////counte2
+//     $('#counte2').on('click',function(){
+//         // counte1 = setInterval(counte1Page_timer,3000);
+//         navigationPage_clear();
+//     });
+//     $('.counter2').on('click',function(){
+//         navigate = setInterval(navigationPage_timer,3000);
+//         // couter1page_clear();
+//     });
+//      /////counte3
+//      $('#counte3').on('click',function(){
+//         navigationPage_clear();
+//     });
+//     $('.counter3').on('click',function(){
+//         navigate = setInterval(navigationPage_timer,3000);
         
-    });
-      /////counte4
-      $('#counte4').on('click',function(){
-        navigationPage_clear();
-    });
-    $('.counter4').on('click',function(){
-        navigate = setInterval(navigationPage_timer,3000);
+//     });
+//       /////counte4
+//       $('#counte4').on('click',function(){
+//         navigationPage_clear();
+//     });
+//     $('.counter4').on('click',function(){
+//         navigate = setInterval(navigationPage_timer,3000);
         
-    });
-     /////counte5
-     $('#counte5').on('click',function(){
-        navigationPage_clear();
-    });
-    $('.counter5').on('click',function(){
-        navigate = setInterval(navigationPage_timer,3000);
+//     });
+//      /////counte5
+//      $('#counte5').on('click',function(){
+//         navigationPage_clear();
+//     });
+//     $('.counter5').on('click',function(){
+//         navigate = setInterval(navigationPage_timer,3000);
         
-    });
-      /////counte6
-      $('#counte6').on('click',function(){
-        navigationPage_clear();
-    });
-    $('.counter6').on('click',function(){
-        navigate = setInterval(navigationPage_timer,3000);
+//     });
+//       /////counte6
+//       $('#counte6').on('click',function(){
+//         navigationPage_clear();
+//     });
+//     $('.counter6').on('click',function(){
+//         navigate = setInterval(navigationPage_timer,3000);
         
-    });
-});
+//     });
+// });
 
 var IDLE_TIMEOUT = 25;
 

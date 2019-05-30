@@ -21,9 +21,12 @@
 
 <link rel="stylesheet" type="text/css" href="jQKeyboard.css">
 <link rel="stylesheet" type="text/css" href="jQKeyboardpass.css">
+<link rel="stylesheet" type="text/css" href="../assets/css/station.css">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.css">
+<!-- <link rel="stylesheet" type="text/css" href="../assets/css/searchSelect/selectstyle.css"> -->
 
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.css"> -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.10/css/bootstrap-select.min.css" />
    <style>
     .navigation{
             background: url(hdfc-icons-sprite_enter1.png) no-repeat;
@@ -793,11 +796,11 @@
 						<p class="counter" id="speechTex">Chat With Me</p>
 					</div>
 				</div>
-				<div class="column-two" id="choice_forex" >
+				<div class="column-two" id="choice_forex" onclick="selectStation();">
 					<i class="icon-options hdfc-sprite five"></i>
 					<div class="option-bg hdfc-sprite">
                         <div id="others1Icon"><img  id="others1IconImag" src="others1.png"></div>
-						<p class="counter" id="otherText1">Addons</p>
+						<p class="counter stationSelect" id="otherText1">Select Station</p>
 					</div>
 
 				</div>
@@ -809,11 +812,11 @@
 						<p class="counter" id="videoTex">Call Incharge</p>
 					</div>
 				</div>
-				<div class="column-two" id="choice_others"  onclick="demo();">
+				<div class="column-two" id="choice_others" onclick="takePhoto();">
 					<i class="icon-options hdfc-sprite six"></i>
 					<div class="option-bg hdfc-sprite">
                         <div id="others2Icon"><img  id="others2IconImag" src="others2.png"></div>
-						<p class="otherscounter" id="otherText2">Addons1</p>
+						<p class="otherscounter takePhoto" id="otherText2">Take Photo</p>
 					</div>
 				
 				</div>
@@ -1478,6 +1481,125 @@
 </div>	
 <!-- end others6Page-->
 
+<!-- start station select session-->
+<div id="station_select">
+    <header  >
+    </header>
+    <main class="background-image">
+
+        <form style="text-align: center;">
+            <div class="row">
+                <div class="col"></div>
+                <div class="col">
+                    <h2 id="selectText">Select Station</h2><br>
+                    <div class="form-group" id="stationSelectDiv">
+                        <!-- <label for="exampleFormControlSelect1">Select Station</label> -->
+                        <select class="form-control" id="station_select">
+                                <option value="Select...">Select Station...</option>
+                                <option value="THIRUVANANTHAPURAM CITY">THIRUVANANTHAPURAM CITY</option>
+                                <option value="THIRUVANANTHAPURAM RURAL">THIRUVANANTHAPURAM RURAL</option>
+                                <option value="KOLLAM CITY">KOLLAM CITY</option>
+                                <option value="KOLLAM RURAL">KOLLAM RURAL</option>
+                                <option value="PATHANAMTHITTA">PATHANAMTHITTA</option>
+                                <option value="ALAPPUZHA">ALAPPUZHA</option>
+                                <option value="KOTTAYAM">KOTTAYAM</option>
+                                <option value="IDUKKI">IDUKKI</option>
+                    
+                                <option value="ERNAKULAM CITY">ERNAKULAM CITY</option>
+                                <option value="ERNAKULAM RURAL">ERNAKULAM RURAL</option>
+                                <option value="THRISSUR">THRISSUR</option>
+                                <option value="THRISSUR RURAL">THRISSUR RURAL</option>
+                                <option value="PALAKKAD">PALAKKAD</option>
+                                <option value="MALAPPURAM">MALAPPURAM</option>
+                                <option value="KOZHIKODE CITY">KOZHIKODE CITY</option>
+                                <option value="KOZHIKODE RURAL">KOZHIKODE RURAL</option>
+                                <option value="WAYANAD">WAYANAD</option>
+                                <option value="KANNUR">KANNUR</option>
+                                <option value="KASARGOD">KASARGOD</option>
+                        </select>
+                    </div>
+                </div>
+               
+                <div class="col"></div>
+            </div>
+            <div class="row">
+                <div class="col"></div>
+                <div class="col">
+                 <ol id="listData">
+                    <li>Test1</li>
+                    <li>Test2</li>
+                 </ol>
+                </div>
+                <div class="col"></div>
+            </div>
+        </form>
+            <footer>
+                   
+            </main>
+            <div class="enterBtn1" id="enterBtn" >
+           
+             <div class="centered1"> 
+                 <a href="#" onclick="nextPage('stationPage');"><li><i  id="nextPage" class="fa fa-arrow-left others6PageBackBtn" aria-hidden="true">&nbsp;Back</i></a>
+            </div>
+             </div> 
+            
+        </footer>  
+</div>	
+<!-- end station select-->
+
+<!-- start take photo session-->
+<div id="take_photo">
+        <header  >
+        </header>
+        <main class="background-image">
+                   <h1 id="faceHeadText">Take Photo</h1>
+        <!-- <div class="row"></div> -->
+        <div class="row" id="snapContainer">
+            
+                <div class="col-4">
+                        <div id="videoDiv" >
+                                <video id="video1" width="350" controls="true">
+                                    <source src="test.mp4"><!-- WebKit -->
+                                </video><br/>
+                                <div class="navigation" onclick="takeShoot();" >
+                                    <h5 id="faceText">Take Photo</h5>
+                               </div>
+                                <!-- <button onclick="shoot()" id="snapBtn"  type="button"  class="btn btn-secondary">Take snapshots</button><br/> -->
+                        </div>
+                </div>
+                <div class="col-8">
+                    <div id="output1"></div><br>
+                    <div id="addfaceDiv1">
+                        <div class="navigation" onclick="addFace();" >
+                            <h5 id="addfaceText1">Upload</h5>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="col-4">
+                    <form>
+                    
+                        <div id="addfaceDiv1">
+                        <div class="navigation" onclick="addFace();" >
+                            <h5 id="addfaceText">Upload</h5>
+                       </div>
+                    </div>
+                    </form>
+                </div> -->
+            </div>
+
+                <footer>
+                       
+                </main>
+                <div class="enterBtn1" id="enterBtn" >
+               
+                 <div class="centered1"> 
+                     <a href="#" onclick="nextPage('stationPage');"><li><i  id="nextPage" class="fa fa-arrow-left others6PageBackBtn" aria-hidden="true">&nbsp;Back</i></a>
+                </div>
+                 </div> 
+                
+            </footer>  
+    </div>	
+    <!-- end take photo select-->
 <script type="text/javascript" src="../assets/js/jquery-3.3.1.min.js"></script>
     
 <script src="https://unpkg.com/popper.js/dist/umd/popper.min.js"></script>
@@ -1488,11 +1610,12 @@
 <script type="text/javascript" src="../assets/js/eventemitter2.min.js"></script>
 <script type="text/javascript" src="../assets/js/roslib.min.js"></script>
 <script type="text/javascript" src="../assets/js/script.js"></script>
-<script type="text/javascript" src="../assets/js/inactive.js"></script>
-<!-- <script type="text/javascript" src="../assets/js/timer.js"></script> -->
+
 <script type="text/javascript" src="../assets/js/data.js"></script>
 <script type="text/javascript" src="../assets/js/index.js"></script>
+<script type="text/javascript" src="../assets/js/stationData/station.js"></script>
 <script type="text/javascript" src="../assets/js/mjpegcanvas.min.js"></script>
+<!-- <script type="text/javascript" src="../assets/js/stationData/station.js"></script> -->
 
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.js"></script>
@@ -1510,6 +1633,16 @@
         });
 
     </script>
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.10/js/bootstrap-select.min.js"></script>
+    <!-- <script type="text/javascript" src="../assets/js/searchSelect/selectstyle.js"></script> -->
+    <!-- <script>
+    jQuery(document).ready(function($) {
+        
+    });
+    </script> -->
+    
 <script>
         var videoId = 'video';
     var scaleFactor = 0.25;

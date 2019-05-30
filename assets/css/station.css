@@ -1,0 +1,33 @@
+
+ #station_select{
+    /* width: 30%; */
+    /* margin-left: 37%; */
+ }
+ #selectText{
+    font-family: good-times;
+    font-size: 29px;
+    font-weight: normal;
+    color: #fff;
+    text-align: center;
+ }
+ #listData{
+    color: #ffff;
+    font-family: good-times;
+    font-size: 26px;
+    font-weight: normal;
+ }
+ #addfaceDiv1{
+    margin-left: 49%;
+    margin-top: 31%;
+ }
+ #output1{
+     float: right;
+ }
+ #addfaceText1 {
+    position: absolute;
+    top: 64%;
+    left: 67%;
+    text-align: center;
+    font-family: good-times;
+    font-weight: normal;
+}

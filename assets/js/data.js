@@ -125,6 +125,15 @@ $//('#index').hide();
         navigate = setInterval(navigationPage_timer,3000);
         
     });
+    ///// sation select
+    $(`.stationSelect`).on('click',function(){
+        console.log('stationSelect');
+        couterpage_clear();
+    });
+    $(`.takePhoto`).on('click',function(){
+        console.log('takePhoto');
+        couterpage_clear();
+    })
 
 });
 

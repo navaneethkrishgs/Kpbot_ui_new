@@ -1,7 +1,17 @@
 $(document).ready(function(){
 
     var timesettings;
-    
+//     $('.clearable.example .ui.selection.dropdown')
+//     .dropdown({
+//       clearable: true
+//     })
+//   ;
+//   $('.clearable.example .ui.inline.dropdown')
+//     .dropdown({
+//       clearable: true,
+//       placeholder: 'any'
+//     })
+//   ;
 
     // $(".counter1").hide();
     $("#User").text('Test User');   /////for welcome page
@@ -163,6 +173,11 @@ $("#navigationPage_counter4").hide();
 $("#navigationPage_counter5").hide();
 $("#navigationPage_counter6").hide();
 
+///////////staion page
+$(`#station_select`).hide();
+////take photo
+$(`#take_photo`).hide();
+
 ///////////////////////////first page ////
     $(".valid").hide();
 
@@ -223,11 +238,11 @@ var langChange= localStorage.getItem('langChange');
         $("#speechTex").css('font-size','40px');
         $("#speechTex").css('padding-top','5%');
 
-        $("#otherText1").text('ऐड-ऑन');
+        $("#otherText1").text('स्टेशन का चयन करें');
         $("#otherText1").css('font-size','40px');
         $("#otherText1").css('padding-top','6%');
 
-        $("#otherText2").text('ऐड-ऑन')
+        $("#otherText2").text('फोटो लो')
         $("#otherText2").css('font-size','40px');
         $("#otherText2").css('padding-top','6%');
 
@@ -318,11 +333,11 @@ var langChange= localStorage.getItem('langChange');
              $("#speechTex").css('font-size','22px');
              $("#speechTex").css('padding-top','38px');
     
-             $("#otherText1").text('Addons');
+             $("#otherText1").text('Select Station');
              $("#otherText1").css('font-size','22px');
              $("#otherText1").css('padding-top','38px');
     
-             $("#otherText2").text('Addons');
+             $("#otherText2").text('Take Photo');
              $("#otherText2").css('font-size','22px');
              $("#otherText2").css('padding-top','38px');
     
@@ -414,11 +429,11 @@ $('#langChange').click(function(){
         $("#speechTex").css('font-size','40px');
         $("#speechTex").css('padding-top','5%');
 
-        $("#otherText1").text('ऐड-ऑन');
+        $("#otherText1").text('स्टेशन का चयन करें');
         $("#otherText1").css('font-size','40px');
         $("#otherText1").css('padding-top','6%');
 
-        $("#otherText2").text('ऐड-ऑन')
+        $("#otherText2").text('फोटो लो')
         $("#otherText2").css('font-size','40px');
         $("#otherText2").css('padding-top','6%');
 
@@ -511,11 +526,11 @@ $('#langChange').click(function(){
          $("#speechTex").css('font-size','22px');
          $("#speechTex").css('padding-top','38px');
 
-         $("#otherText1").text('Addons');
+         $("#otherText1").text('Select Station');
          $("#otherText1").css('font-size','22px');
          $("#otherText1").css('padding-top','38px');
 
-         $("#otherText2").text('Addons');
+         $("#otherText2").text('Take Photo');
          $("#otherText2").css('font-size','22px');
          $("#otherText2").css('padding-top','38px');
 
@@ -982,6 +997,12 @@ else if(nextPage == 'settings_nav_joystick_next'){
     $("#settings_Nav_Joystick_Page").hide();
     $("#settings_Nav_Keyboard_Page").hide();
     
+}else if(nextPage == 'stationPage'){
+    //start();
+    $("#station_select").hide();
+    $("#counterPage").show();
+    //$("#reasonForVisitingPage").show();
+   
 }
 
 }
@@ -1691,14 +1712,14 @@ function addFace(){
     $("#faceText").text('New Snapshot ')
 }
 
-function Addons1() {
-    timesettings=  setInterval(CheckIdleTime, 100);
-}
+// function Addons1() {
+//     timesettings=  setInterval(CheckIdleTime, 100);
+// }
 
-function Addons() {
+// function Addons() {
     
-    clearInterval(timesettings);
-}
+//     clearInterval(timesettings);
+// }
 function letsStart() {
     
     $("#startingPage").hide();
@@ -1706,5 +1727,6 @@ function letsStart() {
     setTimeout(function(){ $("#loadingPage").hide(); $("#indexPage").show();ui_refresh.publish(str);  },3000);
     
 }
+
 
 
