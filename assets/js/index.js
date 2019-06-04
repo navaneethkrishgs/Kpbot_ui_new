@@ -22,7 +22,6 @@ $(document).ready(function(){
     $("#saveVisitData").text('Sent');
     /////////////////for firebase 
 
-
 var config = {
     apiKey: "AIzaSyDMkgGh69rv-4OuD0iorUNi7wpoRHVSQwU",
     authDomain: "asimovrobotics-80c9f.firebaseapp.com",
@@ -32,6 +31,8 @@ var config = {
     messagingSenderId: "309600775453"
   };
   firebase.initializeApp(config);   
+  var db = firebase.firestore();
+  
   //////////////////to generate a user
 //   var userId = 1;
 //   firebase.database().ref('users/' + userId).set({
@@ -44,13 +45,71 @@ var config = {
 //           }
 //         });
 
+   ////////////////// firestore
+                      //////  for create data  //////////
+                    //   db.collection("stations").doc("THIRUVANANTHAPURAM CITY").set({
+                    //     phone1: {"name": "District Police Chief (DIG)", "number": "0471..2320579"},
+                    //     phone2: {"name": "DCP L/O & Traffic", "number": "0471..2321676"},
+                    //     phone3: {"name": "AC Control room", "number": "0471..2331403"},
+                    //     })
+                    //     .then(function() {
+                    //         console.log("Document successfully written!");
+                    //     })
+                    //     .catch(function(error) {
+                    //         console.error("Error writing document: ", error);
+                    //     });
+//   db.collection("stations").doc("THIRUVANANTHAPURAM RURAL").set({
+//     phone1: {"name": "District Police Chief", "number": "0471..2300303"},
+//     phone2: {"name": "DySP (admin)", "number": "0471..2300305"},
+//     phone3: {"name": "DySP Attingal", "number": "0471..2628444"},
+//     })
+//     .then(function() {
+//         console.log("Document successfully written!");
+//     })
+//     .catch(function(error) {
+//         console.error("Error writing document: ", error);
+//     });
+
+///////////////////////////////////    for  select data and display   //////////////////
+
+                    $(`#listData`).hide();
+                    $(`#station_select`).on('change',function(){
+                        var selectedValue = $(`#station_select option:selected`).text();
+                        if( selectedValue == 'Select Station...'){
+
+                        }else {
+                            $(`#listData`).show();
+                            const seletedData =[];
+                            console.log(selectedValue);
+                            var place = "THIRUVANANTHAPURAM RURAL"
+                            var docRef = db.collection("stations").doc(selectedValue);
+                            docRef.get().then(function(doc) {
+                                if (doc.exists) {
+                                    console.log("Document data:", doc.data());
+                                    seletedData.push(doc.data());
+                $(`#stationData`).html("<ol id='listData'><li>"+doc.data().phone1.name+" : "+doc.data().phone1.number+"</li>\
+                                <li>"+doc.data().phone2.name+" : "+doc.data().phone2.number+"</li>\
+                                <li>"+doc.data().phone3.name+" : "+doc.data().phone3.number+"</li>\
+                                </ol>")
+                                    console.log(seletedData)
+                                } else {
+                                    // doc.data() will be undefined in this case
+                                    console.log("No such document!");
+                                }
+                            }).catch(function(error) {
+                                console.log("Error getting document:", error);
+                            });
+                            // $(`#listData`).show();
+                        }
+                    })
+
+
 $("#key13").on('click',function(){
     alert();
 })
 //////////////modal
 $(".setModal").click(function(){
     $("#settingsModalCenter").modal({
-        
     });
 });
     //////saveVisitData
@@ -58,8 +117,6 @@ $(".setModal").click(function(){
 
         var formData = $("#test-form").serialize();
         console.log(formData);
-        
-    
         $.ajax({
             url: 'https://script.google.com/macros/s/AKfycbzlUuVZc08ThqioH2cFtHbKE07er36DKc048wE0GWi80koyD7WS/exec',
             type: 'GET',
@@ -78,10 +135,8 @@ $(".setModal").click(function(){
         $("#visiter_age").val('');
          $("#Visite_reason").val('');
             },
-         
+
         });
-    
-       
     });
 
 
@@ -242,7 +297,7 @@ var langChange= localStorage.getItem('langChange');
         $("#otherText1").css('font-size','40px');
         $("#otherText1").css('padding-top','6%');
 
-        $("#otherText2").text('फोटो लो')
+        $("#otherText2").text('सर्जन करना')
         $("#otherText2").css('font-size','40px');
         $("#otherText2").css('padding-top','6%');
 
@@ -337,7 +392,7 @@ var langChange= localStorage.getItem('langChange');
              $("#otherText1").css('font-size','22px');
              $("#otherText1").css('padding-top','38px');
     
-             $("#otherText2").text('Take Photo');
+             $("#otherText2").text('Create ID');
              $("#otherText2").css('font-size','22px');
              $("#otherText2").css('padding-top','38px');
     
@@ -433,7 +488,7 @@ $('#langChange').click(function(){
         $("#otherText1").css('font-size','40px');
         $("#otherText1").css('padding-top','6%');
 
-        $("#otherText2").text('फोटो लो')
+        $("#otherText2").text('सर्जन करना ID')
         $("#otherText2").css('font-size','40px');
         $("#otherText2").css('padding-top','6%');
 
@@ -530,7 +585,7 @@ $('#langChange').click(function(){
          $("#otherText1").css('font-size','22px');
          $("#otherText1").css('padding-top','38px');
 
-         $("#otherText2").text('Take Photo');
+         $("#otherText2").text('Create ID');
          $("#otherText2").css('font-size','22px');
          $("#otherText2").css('padding-top','38px');
 

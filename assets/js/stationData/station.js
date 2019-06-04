@@ -1,25 +1,19 @@
 $(document).ready(function(){
-    // $('select').selectstyle({
-    //     width  : 400,
-    //     height : 300,
-    //     theme  : 'light',
-    //     onchange : function(val){}
-    // });
-    // console.log('ll');
-    // $("#country").select2( {
-    //     placeholder: "Select Country",
-    //     allowClear: true
-    //     } );
-    $(`#listData`).hide();
-  $(`#station_select`).on('change',function(){
-    var selectedValue = $(`#station_select option:selected`).text();
-    if( selectedValue == 'Select Station...'){
+ 
 
-    }else {
-        console.log(selectedValue);
-        // $(`#listData`).show();
-    }
-  })
+//     $(`#listData`).hide();
+//   $(`#station_select`).on('change',function(){
+//     var selectedValue = $(`#station_select option:selected`).text();
+//     if( selectedValue == 'Select Station...'){
+
+//     }else {
+//         console.log(selectedValue);
+
+//         // $(`#listData`).show();
+//     }
+//   })
+
+  
 });
     /////////////// Police Station select
 function selectStation(){
