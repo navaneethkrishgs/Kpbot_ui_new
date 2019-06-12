@@ -1,4 +1,10 @@
+
+
+
 $(document).ready(function(){
+    // $.getJSON('/assets/json/stations.json', function(data) {
+    //     console.log(JSON.parse(data))
+    //  });
 $('#header').hide();
 $('#disdiv').hide();
 $('#cashWid').hide();
@@ -136,6 +142,9 @@ $//('#index').hide();
     })
 
 });
+
+
+
 
 var IDLE_TIMEOUT = 25;
 
