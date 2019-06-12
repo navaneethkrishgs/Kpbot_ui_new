@@ -1,10 +1,8 @@
 
-
-
 $(document).ready(function(){
-    // $.getJSON('/assets/json/stations.json', function(data) {
-    //     console.log(JSON.parse(data))
-    //  });
+console.log('tested');
+
+
 $('#header').hide();
 $('#disdiv').hide();
 $('#cashWid').hide();
@@ -13,7 +11,7 @@ $('#demat').hide();
 $('#foreignEx').hide();
 $('#fixedDepos').hide();
 $('#speech').hide();
-$//('#index').hide();
+// $//('#index').hide();
 //video streamer
   var cam_viewer = new MJPEGCANVAS.Viewer({
             divID : 'page-front-img',
@@ -22,7 +20,6 @@ $//('#index').hide();
             height : 400,
             topic : '/front_cam'
 
-            
           });
    console.log(cam_viewer);
 

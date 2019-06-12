@@ -31,7 +31,7 @@ var config = {
     messagingSenderId: "309600775453"
   };
   firebase.initializeApp(config);   
-  var db = firebase.firestore();
+//   var db = firebase.firestore();
   
   //////////////////to generate a user
 //   var userId = 1;
@@ -72,36 +72,36 @@ var config = {
 
 ///////////////////////////////////    for  select data and display   //////////////////
 
-                    $(`#listData`).hide();
-                    $(`#station_select`).on('change',function(){
-                        var selectedValue = $(`#station_select option:selected`).text();
-                        if( selectedValue == 'Select Station...'){
+                //     $(`#listData`).hide();
+                //     $(`#station_select`).on('change',function(){
+                //         var selectedValue = $(`#station_select option:selected`).text();
+                //         if( selectedValue == 'Select Station...'){
 
-                        }else {
-                            $(`#listData`).show();
-                            const seletedData =[];
-                            console.log(selectedValue);
-                            var place = "THIRUVANANTHAPURAM RURAL"
-                            var docRef = db.collection("stations").doc(selectedValue);
-                            docRef.get().then(function(doc) {
-                                if (doc.exists) {
-                                    console.log("Document data:", doc.data());
-                                    seletedData.push(doc.data());
-                $(`#stationData`).html("<ol id='listData'><li>"+doc.data().phone1.name+" : "+doc.data().phone1.number+"</li>\
-                                <li>"+doc.data().phone2.name+" : "+doc.data().phone2.number+"</li>\
-                                <li>"+doc.data().phone3.name+" : "+doc.data().phone3.number+"</li>\
-                                </ol>")
-                                    console.log(seletedData)
-                                } else {
-                                    // doc.data() will be undefined in this case
-                                    console.log("No such document!");
-                                }
-                            }).catch(function(error) {
-                                console.log("Error getting document:", error);
-                            });
-                            // $(`#listData`).show();
-                        }
-                    })
+                //         }else {
+                //             $(`#listData`).show();
+                //             const seletedData =[];
+                //             console.log(selectedValue);
+                //             var place = "THIRUVANANTHAPURAM RURAL"
+                //             var docRef = db.collection("stations").doc(selectedValue);
+                //             docRef.get().then(function(doc) {
+                //                 if (doc.exists) {
+                //                     console.log("Document data:", doc.data());
+                //                     seletedData.push(doc.data());
+                // $(`#stationData`).html("<ol id='listData'><li>"+doc.data().phone1.name+" : "+doc.data().phone1.number+"</li>\
+                //                 <li>"+doc.data().phone2.name+" : "+doc.data().phone2.number+"</li>\
+                //                 <li>"+doc.data().phone3.name+" : "+doc.data().phone3.number+"</li>\
+                //                 </ol>")
+                //                     console.log(seletedData)
+                //                 } else {
+                //                     // doc.data() will be undefined in this case
+                //                     console.log("No such document!");
+                //                 }
+                //             }).catch(function(error) {
+                //                 console.log("Error getting document:", error);
+                //             });
+                //             // $(`#listData`).show();
+                //         }
+                //     })
 
 
 $("#key13").on('click',function(){

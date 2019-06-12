@@ -1,19 +1,35 @@
 $(document).ready(function(){
- 
 
-//     $(`#listData`).hide();
-//   $(`#station_select`).on('change',function(){
-//     var selectedValue = $(`#station_select option:selected`).text();
-//     if( selectedValue == 'Select Station...'){
+    $.getJSON('/Kpbot_ui_new/assets/json/stations.json',function(data){
+        console.log(data);
+        $(`#listData`).hide();
+            $(`#station_select`).on('change',function(){
+                var selectedValue = $(`#station_select option:selected`).text();
+                // console.log(selectedValue)
+                if( selectedValue == 'Select Station...'){
 
-//     }else {
-//         console.log(selectedValue);
+                }else {
+                    $(`#listData`).show();
+                    const seletedData =[];
+                    let k;
+                    for(k=0; k < data.length; k++){
+                        // console.log(data[k].locations)
+                        if(data[k].locations === selectedValue){
+                            // console.log('true');
+                            $(`#stationData`).html("<ol id='listData'><li>"+data[k].info1+"</li>\
+                                </ol>");
+                                // if(data[k].info1 == ''){
+                                //     $(`#stationData`).html("NO DATA");
+                                // }
+                        }else {
+                        console.log('No DATA')
+                        }
+                    }
+                }
+            });
+    });
 
-//         // $(`#listData`).show();
-//     }
-//   })
-
-  
+   
 });
     /////////////// Police Station select
 function selectStation(){
