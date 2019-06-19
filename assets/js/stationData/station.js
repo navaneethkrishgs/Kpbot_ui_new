@@ -1,28 +1,39 @@
 $(document).ready(function(){
 
-    $.getJSON('/Kpbot_ui_new/assets/json/stations.json',function(data){
+    ///////////// for Station listing from JSON File
+    $.getJSON('/Kpbot_ui_new/assets/json/Sheet1.json',function(data){
         console.log(data);
-        $(`#listData`).hide();
-            $(`#station_select`).on('change',function(){
-                var selectedValue = $(`#station_select option:selected`).text();
+        $.each(data, function(key, value) {
+            // console.log(key);
+            // console.log(value);
+            $('#station_selectBox')
+                .append($("<option></option>")
+                           .attr("value",value.location)
+                           .text(value.location)); 
+       });
+            $(`#listData`).hide();
+            $(`#station_selectBox`).on('change',function(){
+                var selectedValue = $(`#station_selectBox option:selected`).text();
                 // console.log(selectedValue)
                 if( selectedValue == 'Select Station...'){
-
+                    $(`#stationData`).html("<ol id='listData'><li id='liData'></li>\
+                    </ol>");
                 }else {
                     $(`#listData`).show();
                     const seletedData =[];
                     let k;
                     for(k=0; k < data.length; k++){
-                        // console.log(data[k].locations)
-                        if(data[k].locations === selectedValue){
-                            // console.log('true');
-                            $(`#stationData`).html("<ol id='listData'><li>"+data[k].info1+"</li>\
+                        // console.log(data[k].location)
+                        if(data[k].location === selectedValue){
+                            // console.log(selectedValue)
+                            // console.log(data[k].location);
+                            $(`#stationData`).html("<ol id='listData'><li id='liData'>"+data[k].info1+"</li>\
                                 </ol>");
                                 // if(data[k].info1 == ''){
                                 //     $(`#stationData`).html("NO DATA");
                                 // }
                         }else {
-                        console.log('No DATA')
+                        // console.log('No DATA')
                         }
                     }
                 }

@@ -1494,8 +1494,9 @@
                     <h2 id="selectText">Select Station</h2><br>
                     <div class="form-group" id="stationSelectDiv">
                         <!-- <label for="exampleFormControlSelect1">Select Station</label> -->
-                        <select class="form-control" id="station_select">
+                        <select class="form-control" id="station_selectBox">
                                 <option value="Select...">Select Station...</option>
+                                <!-- <option value="Select...">Select Station...</option>
                                 <option value="THIRUVANANTHAPURAM CITY">THIRUVANANTHAPURAM CITY</option>
                                 <option value="THIRUVANANTHAPURAM RURAL">THIRUVANANTHAPURAM RURAL</option>
                                 <option value="KOLLAM CITY">KOLLAM CITY</option>
@@ -1515,7 +1516,7 @@
                                 <option value="KOZHIKODE RURAL">KOZHIKODE RURAL</option>
                                 <option value="WAYANAD">WAYANAD</option>
                                 <option value="KANNUR">KANNUR</option>
-                                <option value="KASARGOD">KASARGOD</option>
+                                <option value="KASARGOD">KASARGOD</option> -->
                         </select>
                     </div>
                 </div>
@@ -1554,7 +1555,7 @@
         <main class="background-image">
                    <h1 id="faceHeadText">Take Photo</h1>
         <!-- <div class="row"></div> -->
-        <div class="row" id="snapContainer">
+        <div class="row" id="snapContainer_takePh">
             
                 <div class="col-4">
                         <div id="videoDiv" >
@@ -1568,7 +1569,17 @@
                         </div>
                 </div>
                 <div class="col-8">
-                    <div id="output1"></div><br>
+                    <!-- <div id="output1"></div><br> -->
+                    <div class="form-group" id="userProDect">
+                        <label for="email" id="proText">Name:</label>
+                        <input type="text" class="form-control" id="name" placeholder="Enter name" name="name">
+                        <br>
+                        <label for="email" id="proText">Age:</label>
+                        <input type="number" class="form-control" id="age" placeholder="Enter age" name="age">
+                    </div>
+                    <!-- <div class="form-group" id="userProDect">
+                            
+                        </div> -->
                     <div id="addfaceDiv1">
                         <div class="navigation" onclick="addFace();" >
                             <h5 id="addfaceText1">Upload</h5>

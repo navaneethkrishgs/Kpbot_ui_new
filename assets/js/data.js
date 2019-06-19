@@ -1,8 +1,6 @@
 
 $(document).ready(function(){
 console.log('tested');
-
-
 $('#header').hide();
 $('#disdiv').hide();
 $('#cashWid').hide();
@@ -22,8 +20,7 @@ $('#speech').hide();
 
           });
    console.log(cam_viewer);
-
-   //////////////timmer 
+   //////////////timmer
      ////// to counter page
      $('.indexPageBackBtn').on('click',function(){
         index = setInterval(counterPage_timer,3000);

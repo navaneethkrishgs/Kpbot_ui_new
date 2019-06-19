@@ -13,12 +13,12 @@
  #listData{
     color: #ffff;
     /* font-family: good-times; */
-    font-size: 17px;
+    font-size: 21px;
     font-weight: normal;
  }
  #addfaceDiv1{
     margin-left: 49%;
-    margin-top: 31%;
+    margin-top: 34%;
  }
  #output1{
      float: right;
@@ -30,4 +30,22 @@
     text-align: center;
     font-family: good-times;
     font-weight: normal;
+}
+#stationData{
+   margin-top: 3%;
+}
+#liData{
+   font-weight: bold;
+}
+#userProDect{
+   width: 40%;
+   float: right;
+}
+#proText{
+   font-family: good-times;
+   font-weight: normal;
+   color: #fff;
+}
+#snapContainer_takePh{
+   padding-top: 77px;
 }
