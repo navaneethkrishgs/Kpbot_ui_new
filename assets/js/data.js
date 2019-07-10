@@ -134,6 +134,11 @@ $('#speech').hide();
         console.log('takePhoto');
         couterpage_clear();
     })
+    //// id card 
+    $('.takephotoPageBackBtn').on('click',function(){
+        c_time =0;
+        index = setInterval(counterPage_timer,3000);
+    });
 
 });
 

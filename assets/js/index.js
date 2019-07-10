@@ -232,6 +232,8 @@ $("#navigationPage_counter6").hide();
 $(`#station_select`).hide();
 ////take photo
 $(`#take_photo`).hide();
+/// id card
+$(`#id_card`).hide();
 
 ///////////////////////////first page ////
     $(".valid").hide();
@@ -917,23 +919,15 @@ function nextPage(nextPage){
       $("#counterPage").show();
       $("#videoPage").hide();
       $("#reasonForVisitingPageHeader").hide();
-
-     
-      
   }else if(nextPage == "main"){
     //start();
-
     $(".skype-chat").hide(); /////skype hide
-      
      $("#navigationPage").hide();
      $("#navigationHeader").hide();
       $("#speechPage").hide();
       $("#counterPage").show();
       $("#videoPage").hide();
       $("#reasonForVisitingPageHeader").hide();
-
-     
-      
   }
 
   else if(nextPage == "counters"){
@@ -1057,6 +1051,22 @@ else if(nextPage == 'settings_nav_joystick_next'){
     $("#station_select").hide();
     $("#counterPage").show();
     //$("#reasonForVisitingPage").show();
+   
+}else if(nextPage == 'idcard'){
+    //start();
+    $("#id_card").hide();
+    $(`#img_col`).show();
+    $("#take_photo").show();
+    $(`.idBackBtn`).show();
+    //$("#reasonForVisitingPage").show();
+   
+}else if(nextPage == 'takephoto'){
+console.log('takephoto')
+$(`#take_photo`).hide();
+$(`#counterPage`).show();
+    // $("#station_select").hide();
+    // $("#counterPage").show();
+
    
 }
 
@@ -1763,8 +1773,28 @@ function cameraFeed(){
 
 ////////////////////////face 
 function addFace(){
+    if(!$(`#idname`).val() || !$(`#idage`).val()){
+        console.log('enter ')
+        var x = document.getElementById("snackbar");
+        x.className = "show";
+        setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+    }else{
+    const idData ={
+        "name": $(`#idname`).val(),
+        "age": $(`#idage`).val()
+    }
+    $(`#id_text`).text($(`#idname`).val()+'('+''+$(`#idage`).val()+''+')');
+    $(`#id_text1`).text($(`#idname`).val()+'('+''+$(`#idage`).val()+''+')');
+    // $(`#id_text`).text($(`#idname`).val());
+    // $(`#id_text_age`).text($(`#idage`).val());
+    localStorage.setItem('idData',JSON.stringify(idData));
     $("#canvasId").remove();
-    $("#faceText").text('New Snapshot ')
+    $("#faceText").text('New Snapshot ');
+    $(`#take_photo`).hide();
+    $(`#id_card`).show();
+    $(`#idname`).val('');
+    $(`#idage`).val('');
+  }
 }
 
 // function Addons1() {
@@ -1781,6 +1811,12 @@ function letsStart() {
     $("#loadingPage").show();
     setTimeout(function(){ $("#loadingPage").hide(); $("#indexPage").show();ui_refresh.publish(str);  },3000);
     
+}
+/// id card generation
+function printIdCard(){
+    $(`.idBackBtn`).hide();
+    $(`#img_col`).hide();
+    console.log('printIdCard')
 }
 
 

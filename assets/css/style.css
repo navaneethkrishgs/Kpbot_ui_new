@@ -1386,6 +1386,96 @@ video::-webkit-media-controls-volume-slider {
   video::-webkit-media-controls-mute-button {
   display:none;
   }
+  #id_img{
+    border-radius: 50%;
+    padding-top: 4%;
+  }
+  #id_img_col{
+    text-align: center;
+  }
+  #id_text{
+    text-transform: capitalize;
+    color: #ffff;
+    padding-top: 3%;
+
+    text-align: center;
+    font-family: good-times;
+    font-weight: normal;
+  }
+  #id_text1{
+    text-transform: capitalize;
+    color: #000000;
+    padding-top: 3%;
+
+    text-align: center;
+    font-family: good-times;
+    font-weight: normal;
+  }
+  #id_row{
+    text-align: center;
+  }
+  #img_col #printID {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #ffff;
+    font-size: 21px;
+    font-family: good-times;
+  }
+  .example-print {
+    display: none;
+}
+@media print {
+   .example-screen {
+       display: none;
+    }
+    .example-print {
+       display: block;
+    }
+}
+/* // toastar/// */
+#snackbar {
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -125px;
+  background-color:  #fff;
+  color: #333;
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  bottom: 30px;
+  font-size: 17px;
+}
+
+#snackbar.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;} 
+  to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {bottom: 30px; opacity: 1;} 
+  to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
 /* 
   audio::-webkit-media-controls-timeline,
 video::-webkit-media-controls-timeline {
