@@ -1,5 +1,4 @@
 $(document).ready(function(){
-
     var timesettings;
 //     $('.clearable.example .ui.selection.dropdown')
 //     .dropdown({
@@ -761,6 +760,8 @@ $('#VideoCallPageDisable').click(function(){
 
 ///////////////settings
 $(".settingsPageBackBtn").hide();
+
+
 });
 
 
@@ -770,7 +771,6 @@ $(".settingsPageBackBtn").hide();
 ///////for settings page 
 
 function check_user(pageSettings){
-    
     $('#settingsModalCenter').modal('hide');
     // $(".indexpageClass").removeAttr('id');
  if(pageSettings == 'welcome'){
@@ -1794,6 +1794,7 @@ function addFace(){
     $(`#id_card`).show();
     $(`#idname`).val('');
     $(`#idage`).val('');
+   
   }
 }
 
@@ -1814,9 +1815,16 @@ function letsStart() {
 }
 /// id card generation
 function printIdCard(){
-    $(`.idBackBtn`).hide();
-    $(`#img_col`).hide();
+    var today = new Date();
+    var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
+    var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    console.log(date)
+    $(`#id_timestamp`).text(date +','+ time);
+    // console.log(time)
+    // $(`.idBackBtn`).hide();
+    // $(`#img_col`).hide();
     console.log('printIdCard')
+    // window.print(); 
 }
 
 

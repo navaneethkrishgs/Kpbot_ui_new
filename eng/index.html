@@ -2,7 +2,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>HDFC</title>
+	<title>Police</title>
 	<meta name="description" content="HDFC Website">
 	<meta name="author" content="hdfc.com">
     <meta name="viewport" content="width=device-width initial-scale=1">
@@ -63,7 +63,10 @@
 <script>
   
 </script>
-
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1.12.min.js"></script>
+    <!-- // for pdf generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script>
 </head>
 <body id="body" onload="emptyCode();" >
 
@@ -1578,7 +1581,7 @@
                             <input type="text" class="form-control" id="idname" placeholder="Enter name" name="name">
                             <br>
                             <label for="email" id="proText">Age:</label>
-                            <input type="number" class="form-control" id="idage" placeholder="Enter age" name="age">
+                            <input type="number" class="form-control idage" id="idage" min="0" oninput="validity.valid||(value='');" placeholder="Enter age" name="age">
                         </div>
                         <!-- <div class="form-group" id="userProDect">
                                 
@@ -1618,15 +1621,17 @@
                         <img src="../assets/images/id_img.png" id="id_img" alt="Avatar" style="width:200px">
                 </div>
                 <div class="col-12" id="id_img_col">
-                    <h3 id="id_text" class="example-screen"> </h3>
-                    <h3 id="id_text1" class="example-print"> </h3>
+                    <!-- <h3 id="id_text" class="example-screen"> </h3> -->
+                    <!-- <h3 id="id_text1" class="example-print"> </h3> -->
+                    <!-- <h3 id="id_timestamp" class="example-print"></h3> -->
+                    <h3 id="id_text1" class="textBox"> </h3>
+                    <h3 id="id_timestamp" class="timestamp"></h3>
                     <!-- <h1>Age: 24</h1> -->
                 </div>
-                
-    
             </div>
             <div class="row" id="id_row">
-                <div class="col-12 example-screen" id="img_col" onclick="window.print();">
+                    <!-- onclick="window.print();" -->
+                <div class="col-12 example-screen" id="img_col" >
                         <img src="./hdfc-icons-sprite_enter1.png" alt="Paris" style="width:38%;">
                     <!-- <div class="navigation1"  onclick="printIdCard();" > -->
                         <h5 id="printID">PRINT</h5>
@@ -1635,7 +1640,6 @@
             </div>
 
                 <footer>
-                    
                 </main>
                 <div class="enterBtn1 example-screen" id="enterBtn" >
             
@@ -1662,7 +1666,7 @@
 <script type="text/javascript" src="../assets/js/index.js"></script>
 <script type="text/javascript" src="../assets/js/stationData/station.js"></script>
 <script type="text/javascript" src="../assets/js/mjpegcanvas.min.js"></script>
-<script type="text/javascript" src="../assets/js/stationData/station.js"></script>
+<!-- <script type="text/javascript" src="../assets/js/stationData/station.js"></script> -->
 
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.js"></script>
@@ -1749,6 +1753,88 @@
     }
     </script>
 
+<!-- ///// aws bucket// -->
+<script type="text/javascript">
+        // $(`#timestamp`).hide();
+        // $(`#textBox`).hide();
+        var today = new Date();
+    var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
+    var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    console.log(date)
+    $(`#id_timestamp`).text(date +','+ time);
+    AWS.config.region = 'ap-south-1'; // 1. Enter your region
+
+    AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+        IdentityPoolId: 'ap-south-1:7dd41a84-8eb2-4c1c-b3ae-a0557392dfad' // 2. Enter your identity pool
+    });
+
+    AWS.config.credentials.get(function(err) {
+        if (err) alert(err);
+        console.log(AWS.config.credentials);
+    });
+
+    var bucketName = 'keralapolice'; // Enter your bucket name
+    var bucket = new AWS.S3({
+        params: {
+            Bucket: bucketName
+        }
+    });
+
+    // var fileChooser = document.getElementById('file-chooser');
+    var button = document.getElementById('printID');
+ 
+    // var results = document.getElementById('results');
+    button.addEventListener('click', function() {
+        console.log(button)
+        $(`#timestamp`).show();
+        $(`#textBox`).show();
+        let doc = new jsPDF('p','pt','a4');
+        console.log(doc)
+doc.addHTML(document.body,function() {
+    // doc.save('html.pdf');
+});
+    //     var file = fileChooser.files[0];
+
+    //     if (file) {
+
+    //         results.innerHTML = '';
+    //         var objKey = 'kpbot/' + file.name;
+    //         var params = {
+    //             Key: objKey,
+    //             ContentType: file.type,
+    //             Body: file,
+    //             ACL: 'public-read'
+    //         };
+
+    //         bucket.putObject(params, function(err, data) {
+    //             if (err) {
+    //                 results.innerHTML = 'ERROR: ' + err;
+    //             } else {
+    //                 listObjs();
+    //             }
+    //         });
+    //     } else {
+    //         results.innerHTML = 'Nothing to upload.';
+    //     }
+    }, false);
+    // function listObjs() {
+    //     var prefix = 'kpbot';
+    //     bucket.listObjects({
+    //         Prefix: prefix
+    //     }, function(err, data) {
+    //         if (err) {
+    //             results.innerHTML = 'ERROR: ' + err;
+    //         } else {
+    //             var objKeys = "";
+    //             data.Contents.forEach(function(obj) {
+    //                 objKeys += obj.Key + "<br>";
+    //             });
+    //             results.innerHTML = objKeys;
+    //         }
+    //     });
+    // }
+ 
+    </script>
 </body>
 </html>
 

@@ -1388,7 +1388,7 @@ video::-webkit-media-controls-volume-slider {
   }
   #id_img{
     border-radius: 50%;
-    padding-top: 4%;
+    /* padding-top: 4%; */
   }
   #id_img_col{
     text-align: center;
