@@ -57,7 +57,7 @@
 
 <script src="https://swc.cdn.skype.com/sdk/v1/sdk.min.js"></script>
 
-
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase.js"></script>
 <script>
@@ -65,8 +65,11 @@
 </script>
     <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1.12.min.js"></script>
     <!-- // for pdf generation -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script> -->
+
+
+
 </head>
 <body id="body" onload="emptyCode();" >
 
@@ -1615,7 +1618,7 @@
         <main class="background-image">
                 <h1 id="faceHeadText" class="example-screen">ID Card</h1>
         <!-- <div class="row"></div> -->
-        <div class="row " id="">
+        <div class="row print-wrap page1" id="onlyforPrint">
             
                 <div class="col-12" id="id_img_col">
                         <img src="../assets/images/id_img.png" id="id_img" alt="Avatar" style="width:200px">
@@ -1624,14 +1627,16 @@
                     <!-- <h3 id="id_text" class="example-screen"> </h3> -->
                     <!-- <h3 id="id_text1" class="example-print"> </h3> -->
                     <!-- <h3 id="id_timestamp" class="example-print"></h3> -->
+                   
                     <h3 id="id_text1" class="textBox"> </h3>
                     <h3 id="id_timestamp" class="timestamp"></h3>
+                    
                     <!-- <h1>Age: 24</h1> -->
                 </div>
             </div>
             <div class="row" id="id_row">
                     <!-- onclick="window.print();" -->
-                <div class="col-12 example-screen" id="img_col" onclick="demoFromHTML();">
+                <div class="col-12 example-screen" id="img_col" onclick="generatePDF();">
                         <img src="./hdfc-icons-sprite_enter1.png" alt="Paris" style="width:38%;">
                     <!-- <div class="navigation1"  onclick="printIdCard();" > -->
                         <h5 id="printID">PRINT</h5>
@@ -1647,8 +1652,9 @@
                     <a href="#" onclick="nextPage('idcard');"><li><i  id="nextPage" class="fa fa-arrow-left " aria-hidden="true">&nbsp;Back</i></a>
                 </div>
                 </div> 
-                
+ 
             </footer>  
+
 </div>
 <!-- end take photo select-->
 <script type="text/javascript" src="../assets/js/jquery-3.3.1.min.js"></script>
@@ -1666,10 +1672,124 @@
 <script type="text/javascript" src="../assets/js/index.js"></script>
 <script type="text/javascript" src="../assets/js/stationData/station.js"></script>
 <script type="text/javascript" src="../assets/js/mjpegcanvas.min.js"></script>
+<script type="text/javascript" src="../assets/js/aws.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
 <!-- <script type="text/javascript" src="../assets/js/stationData/station.js"></script> -->
+ <!-- for ID CARD -->
+<!-- /// for id card -->
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.debug.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
 
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.js"></script>
+
+<script>
+    var pdf,page_section,HTML_Width,HTML_Height,top_left_margin,PDF_Width,PDF_Height,canvas_image_width,canvas_image_height;
+function calculatePDF_height_width(selector,index){
+page_section = $(selector).eq(index);
+HTML_Width = page_section.width();
+HTML_Height = page_section.height();
+top_left_margin = 15;
+PDF_Width = HTML_Width + (top_left_margin * 2);
+PDF_Height = (PDF_Width * 1.2) + (top_left_margin * 2);
+canvas_image_width = HTML_Width;
+canvas_image_height = HTML_Height;
+}
+//Generate PDF
+function generatePDF() {
+    pdf = "";
+$("#downloadbtn").hide();
+$("#genmsg").show();
+    html2canvas($(".print-wrap:eq(0)")[0], { allowTaint: true }).then(function(canvas) {
+
+        calculatePDF_height_width(".print-wrap",0);
+        var imgData = canvas.toDataURL("image/png", 1.0);
+        pdf = new jsPDF('p', 'pt', [PDF_Width, PDF_Height]);
+        pdf.addImage(imgData, 'JPG', top_left_margin, top_left_margin, HTML_Width, HTML_Height);
+
+    });
+
+    html2canvas($(".print-wrap:eq(2)")[0], { allowTaint: true }).then(function(canvas) {
+            //console.log((page_section.length-1)+"==="+index);
+            setTimeout(function() {
+
+                //Save PDF Doc	
+                // pdf.save("HTML-Document.pdf");
+
+                //Generate BLOB object
+                var blob = pdf.output("blob");
+ //// for AWS
+ $("#id_card").hide();
+    $("#loadingPage").show();
+ AWS.config.region = 'ap-south-1'; // 1. Enter your region
+AWS.config.update({
+    accessKeyId: 'AKIAJBMCVEH7GUYCEG7Q',
+    secretAccessKey: 'IexYHICmCNLNIjKIMeJfCArdWw0j7y/0oSx7sFko'
+});
+var bucketName = 'keralapolice'; // Enter your bucket name
+var bucket = new AWS.S3({
+    params: {
+        Bucket: bucketName
+    }
+});
+var filename = Math.random();
+var objKey = 'kpbot/' + 'id_card'+filename+'';
+    var params = {
+        Key: objKey,
+        ContentType: 'application/pdf',
+        Body: blob,
+        ACL: 'public-read'
+    };
+         bucket.upload(params, function(err, data){
+                    if (err) {
+                        console.log(err);
+                    } else {
+                       console.log(data);
+                       if(data){
+                           var Url ={
+                            "location": data.Location,
+                           }
+                        axios.post('http://localhost:3007/secure/awss3url', Url)
+                        .then(function (response) {
+                            console.log(response);
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        });
+                       }
+                       AWSBucketArray.push(data);
+                       $("#id_card").show();
+                       $("#loadingPage").hide();
+                       localStorage.setItem('AWS_S3_bucketData', JSON.stringify(AWSBucketArray));
+                    }
+                });
+
+/// end AWS
+                //Getting URL of blob object
+                // var blobURL = URL.createObjectURL(blob);
+
+                //Showing PDF generated in iFrame element
+                // var iframe = document.getElementById('sample-pdf');
+                // iframe.src = blobURL;
+
+                //Setting download link
+                // var downloadLink = document.getElementById('pdf-download-link');
+                // downloadLink.href = blobURL;
+
+$("#sample-pdf").slideDown();
+
+
+$("#downloadbtn").show();
+$("#genmsg").hide();
+            }, 0);
+    });
+};
+    
+</script>
+
+ <!-- END ID CARD -->
 
 
 
@@ -1693,7 +1813,7 @@
         
     });
     </script> -->
-    
+
 <script>
         var videoId = 'video';
     var scaleFactor = 0.25;
@@ -1755,6 +1875,7 @@
 
 <!-- ///// aws bucket// -->
 <script type="text/javascript">
+var AWSBucketArray =[];
         // $(`#timestamp`).hide();
         // $(`#textBox`).hide();
         var today = new Date();
@@ -1794,96 +1915,16 @@
     //     // doc.save('html.pdf');
     // });
     // }, false);
-    function demoFromHTML() {
-        var pdf = new jsPDF('p', 'pt', 'a4');
-        // source can be HTML-formatted string, or a reference
-        // to an actual DOM element from which the text will be scraped.
-        source = $('#id_card')[0];
 
-        // we support special element handlers. Register them with jQuery-style 
-        // ID selector for either ID or node name. ("#iAmID", "div", "span" etc.)
-        // There is no support for any other type of selectors 
-        // (class, of compound) at this time.
-        specialElementHandlers = {
-            // element with id of "bypass" - jQuery style selector
-            '#bypassme': function (element, renderer) {
-                // true = "handled elsewhere, bypass text extraction"
-                return true
-            }
-        };
-        margins = {
-            top: 80,
-            bottom: 60,
-            left: 40,
-            width: 522
-        };
-        // all coords and widths are in jsPDF instance's declared units
-        // 'inches' in this case
-        pdf.fromHTML(
-            source, // HTML string or DOM elem ref.
-            margins.left, // x coord
-            margins.top, { // y coord
-                'width': margins.width, // max width of content on PDF
-                'elementHandlers': specialElementHandlers
-            },
-
-            function (dispose) {
-                // console.log(pdf)
-                // dispose: object with X, Y of the last line add to the PDF 
-                //          this allow the insertion of new lines after html
-                // pdf.save('Test.pdf');
-                var pdf1 = pdf.output();
-                //// for AWS
-                AWS.config.region = 'ap-south-1'; // 1. Enter your region
-
-                AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-                    IdentityPoolId: 'ap-south-1:7dd41a84-8eb2-4c1c-b3ae-a0557392dfad' // 2. Enter your identity pool
-                });
-
-                AWS.config.credentials.get(function(err) {
-                    if (err) alert(err);
-                    console.log(AWS.config.credentials);
-                });
-
-                var bucketName = 'keralapolice'; // Enter your bucket name
-                var bucket = new AWS.S3({
-                    params: {
-                        Bucket: bucketName
-                    }
-                });
-                var filename = Math.random();
-                var objKey = 'kpbot/' + 'id_card'+filename+'';
-                    var params = {
-                        Key: objKey,
-                        ContentType: 'application/pdf',
-                        Body: pdf1,
-                        ACL: 'public-read'
-                    };
-
-                    bucket.putObject(params, function(err, data) {
-                        if (err) {
-                            console.log(err)
-                            // results.innerHTML = 'ERROR: ' + err;
-                        } else {
-                            // listObjs();
-                            console.log(data)
-                            window.print();
-                        }
-                    });
-
-                //    console.log(get)
-                /// end AWS
-                    // $('iframe').attr('src', data)
-                    var data = new FormData();
-                    data.append("data" , pdf1);
-                    var xhr = new XMLHttpRequest();
-                    xhr.open( 'post', 'upload.php', true ); //Post to php Script to save to server
-                    xhr.send(data);
-            }, margins
-        );
-    }
- 
+    function AWSbucketLoad() {
+    
+    $("#id_card").hide();
+    $("#loadingPage").show();
+    // setTimeout(function(){ $("#loadingPage").hide(); $("#id_card").show();ui_refresh.publish(str);  },5000);
+    
+}
     </script>
+
 </body>
 </html>
 

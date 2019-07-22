@@ -1476,6 +1476,11 @@ video::-webkit-media-controls-volume-slider {
   from {bottom: 30px; opacity: 1;}
   to {bottom: 0; opacity: 0;}
 }
+
+/* //// id card */
+#textBox{
+  background-color: #FFFFFF;
+}
 /* 
   audio::-webkit-media-controls-timeline,
 video::-webkit-media-controls-timeline {
