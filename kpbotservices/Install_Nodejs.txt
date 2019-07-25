@@ -1,0 +1,31 @@
+1. use curl to retrieve the installation script for your preferred version
+
+   curl -sL https://deb.nodesource.com/setup_12.x -o nodesource_setup.sh
+
+2. $ sudo bash nodesource_setup.sh
+
+3. $ sudo apt-get install nodejs
+
+4. To check which version of Node.js
+
+   $ nodejs -v
+
+5. Check version of npm
+
+   $ npm -v
+
+6. If npm is not installed
+
+   $ sudo apt-get install npm
+
+7. Check the version of npm
+
+   $ npm -v
+
+8. Then go to 'kpbotservices' directory run
+
+   $ npm install  & npm install -g nodemon
+
+9. Then
+
+   $ nodemon

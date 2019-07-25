@@ -1718,53 +1718,78 @@ $("#genmsg").show();
 
                 //Generate BLOB object
                 var blob = pdf.output("blob");
- //// for AWS
- $("#id_card").hide();
-    $("#loadingPage").show();
- AWS.config.region = 'ap-south-1'; // 1. Enter your region
-AWS.config.update({
-    accessKeyId: 'AKIAJBMCVEH7GUYCEG7Q',
-    secretAccessKey: 'IexYHICmCNLNIjKIMeJfCArdWw0j7y/0oSx7sFko'
-});
-var bucketName = 'keralapolice'; // Enter your bucket name
-var bucket = new AWS.S3({
-    params: {
-        Bucket: bucketName
-    }
-});
-var filename = Math.random();
-var objKey = 'kpbot/' + 'id_card'+filename+'';
-    var params = {
-        Key: objKey,
-        ContentType: 'application/pdf',
-        Body: blob,
-        ACL: 'public-read'
-    };
-         bucket.upload(params, function(err, data){
-                    if (err) {
-                        console.log(err);
-                    } else {
-                       console.log(data);
-                       if(data){
-                           var Url ={
-                            "location": data.Location,
-                           }
-                        axios.post('http://localhost:3007/secure/awss3url', Url)
-                        .then(function (response) {
-                            console.log(response);
-                        })
-                        .catch(function (error) {
-                            console.log(error);
-                        });
-                       }
-                       AWSBucketArray.push(data);
-                       $("#id_card").show();
+                var filename = $(`#id_text1`).text();
+                var time = $(`#id_timestamp`).text();
+                var finalFileName = 'id_card'+filename+''+time+'';
+                    blob.originalname = finalFileName;
+
+                /// for file upload to localy//
+                console.log(blob)
+                var filename = $(`#id_text1`).text();
+                var time = $(`#id_timestamp`).text();
+                var finalFileName = 'id_card'+filename+''+time+'';
+                var fileuploadData = new FormData();
+                fileuploadData.append('idcard', blob);
+                fileuploadData.append('finalFileName', finalFileName);
+                console.log(fileuploadData)
+                axios.post('http://localhost:3007/secure/users/idcard', fileuploadData)
+                    .then(function (response) {
+                        console.log(response);
+                        $("#id_card").show();
                        $("#loadingPage").hide();
-                       localStorage.setItem('AWS_S3_bucketData', JSON.stringify(AWSBucketArray));
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+                ////////////////////////
+                //// for AWS
+                $("#id_card").hide();
+                    $("#loadingPage").show();
+                AWS.config.region = 'ap-south-1'; // 1. Enter your region
+                AWS.config.update({
+                    accessKeyId: 'AKIAJBMCVEH7GUYCEG7Q',
+                    secretAccessKey: 'IexYHICmCNLNIjKIMeJfCArdWw0j7y/0oSx7sFko'
+                });
+                var bucketName = 'keralapolice'; // Enter your bucket name
+                var bucket = new AWS.S3({
+                    params: {
+                        Bucket: bucketName
                     }
                 });
+                var filename = $(`#id_text1`).text();
+                var time = $(`#id_timestamp`).text();
+                var objKey = 'kpbot/' + 'id_card'+filename+''+time+'';
+                    var params = {
+                        Key: objKey,
+                        ContentType: 'application/pdf',
+                        Body: blob,
+                        ACL: 'public-read'
+                    };
+                        bucket.upload(params, function(err, data){
+                                    if (err) {
+                                        console.log(err);
+                                    } else {
+                                    console.log(data);
+                                    if(data){
+                                        //    var Url ={
+                                        //     "location": data.Location,
+                                        //    }
+                                        // axios.post('http://localhost:3007/secure/awss3url', Url)
+                                        // .then(function (response) {
+                                        //     console.log(response);
+                                        // })
+                                        // .catch(function (error) {
+                                        //     console.log(error);
+                                        // });
+                                    }
+                                    AWSBucketArray.push(data);
+                                    //    $("#id_card").show();
+                                    //    $("#loadingPage").hide();
+                                    localStorage.setItem('AWS_S3_bucketData', JSON.stringify(AWSBucketArray));
+                                    }
+                                });
 
-/// end AWS
+                /// end AWS
                 //Getting URL of blob object
                 // var blobURL = URL.createObjectURL(blob);
 
