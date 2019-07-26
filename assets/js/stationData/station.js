@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
     ///////////// for Station listing from JSON File
-    $.getJSON('/Kpbot_ui_new/assets/json/Sheet1.json',function(data){
+    $.getJSON('/Kpbot_ui_new/assets/json/Sheet.json',function(data){
         console.log(data);
         $.each(data, function(key, value) {
             // console.log(key);
