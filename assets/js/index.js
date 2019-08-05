@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    console.log('Index js')
     var timesettings;
 //     $('.clearable.example .ui.selection.dropdown')
 //     .dropdown({
@@ -29,7 +30,9 @@ var config = {
     storageBucket: "asimovrobotics-80c9f.appspot.com",
     messagingSenderId: "309600775453"
   };
-  firebase.initializeApp(config);   
+  firebase.initializeApp(config);
+  
+//   console.log(firebase)
 //   var db = firebase.firestore();
   
   //////////////////to generate a user
@@ -108,6 +111,7 @@ $("#key13").on('click',function(){
 })
 //////////////modal
 $(".setModal").click(function(){
+    jQuery.noConflict()
     $("#settingsModalCenter").modal({
     });
 });
@@ -771,6 +775,8 @@ $(".settingsPageBackBtn").hide();
 ///////for settings page 
 
 function check_user(pageSettings){
+    console.log(pageSettings)
+    jQuery.noConflict();
     $('#settingsModalCenter').modal('hide');
     // $(".indexpageClass").removeAttr('id');
  if(pageSettings == 'welcome'){
